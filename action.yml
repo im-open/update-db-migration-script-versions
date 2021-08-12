@@ -1,22 +1,19 @@
-name: 'Composite Run Steps Action Template'
+name: Update Migration Script Versions
 
-description: 'Add description here'
+description: Updates the names of the migration scripts with the next sequential version number
 
 inputs:
-  input-1:
-    description: 'Add a description here'
+  migration-script-path:
+    description: The path to the migration scripts. Searching for the scripts is done recursively so pointing at a base directory with sub directories is ok.
     required: true
-
-outputs:
-  output-1:
-    description: 'Add description here'
-    value: '${{ steps.step_1.outputs.world }}'
+  max-version-gap:
+    description: The maximum difference between valid versions and ones to update.
+    required: true
+    default: '100'
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: Step 1
-      id: step_1
-      shell: bash
-      run: |
-        echo "::set-output name=hello::world"
+    - name: Update migration scripts
+      shell: pwsh
+      run: ${{ github.action_path }}/src/update-migration-script-versions.ps1 -migrationPath "${{ inputs.migration-script-path }}" -maxVersionGap ${{ inputs.max-version-gap }}
