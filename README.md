@@ -44,10 +44,10 @@ jobs:
   update-migration-scripts:
     runs-on: [self-hosted]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Update the versions of migration scripts
-        uses: im-open/update-db-migration-script-versions@v1.0.1
+        uses: im-open/update-db-migration-script-versions@v1.0.2
         with:
           migration-script-path: '.\Database\Migrations'
 ```
