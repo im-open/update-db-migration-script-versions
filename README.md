@@ -2,7 +2,7 @@
 
 This action takes in a path to your SQL migration scripts (`.sql` files) and updates any of them that have versions outside of the sequential order. For example, if this folder structure was the one the action was processing
 
-```
+```txt
 Database
 │
 └───folder1
@@ -28,9 +28,10 @@ As a final note, you will have to give your unversioned scripts temporary versio
 - [Contributing](#contributing)
   - [Incrementing the Version](#incrementing-the-version)
 - [Code of Conduct](#code-of-conduct)
-- [License](#license)    
+- [License](#license)
 
 ## Inputs
+
 | Parameter               | Is Required | Default | Description                                                                                                                                  |
 | ----------------------- | ----------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `migration-script-path` | true        | N/A     | The path to the migration scripts. Searching for the scripts is done recursively so pointing at a base directory with sub directories is ok. |
@@ -47,11 +48,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Update the versions of migration scripts
-        uses: im-open/update-db-migration-script-versions@v1.0.2
+        uses: im-open/update-db-migration-script-versions@v1.0.3
         with:
           migration-script-path: '.\Database\Migrations'
 ```
-
 
 ## Contributing
 
